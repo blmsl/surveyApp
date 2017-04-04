@@ -1,0 +1,27 @@
+<div class="container sign-in-wrapper">
+  <div class="sign-in-box">
+    <div class="modal-header">
+      <h4 class="modal-title">Đăng Nhập</h4>
+    </div>
+    <div class="modal-body">
+      <p class="alert alert-danger" *ngIf="alert">{{ alert }}</p>
+      <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <div class="form-group">
+          <input type="text" class="form-control user_input" name="username" [(ngModel)]="user.username" formControlName="username"
+            placeholder="Username...">
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control user_input" name="password" [(ngModel)]="user.password" formControlName="password"
+            placeholder="Password">
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary login-button ed-button" type="submit" ng-disabled="loginCtrl.disableSubmit">Đăng Nhập</button>
+          <label class="checkbox-inline"><input type="checkbox" value="">Nhớ mật khẩu</label>
+          <a ui-sref="forgetPass" class="forget-password">Bạn quên mật khẩu?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

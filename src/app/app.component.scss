@@ -1,0 +1,22 @@
+$primary-color: #2e8ece;
+$secondary-color: #45a75c;
+$title-color: #333;
+
+main {
+  margin-top: 80px;
+}
+
+.page-title {
+  h1 {
+    margin: 0;
+    float: left;
+  }
+
+  a {
+    float: right;
+  }
+
+  .clearfix {
+    clear: both;
+  }
+}
