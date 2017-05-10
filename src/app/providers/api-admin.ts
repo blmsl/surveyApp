@@ -24,7 +24,7 @@ export class ApiAdmin {
     }
   }
 
-  post(requestUrl, body, options?) {
+  post(requestUrl, body?, options?) {
     const endpoint = this.url + requestUrl;
     let headers = new Headers();
     headers.append('Authorization', 'Bearer {' + this.localStorage.retrieve('token') + '}');

@@ -45,7 +45,19 @@ export class LoginPage {
         this.localStorage.store('token', res.token);
         this.localStorage.store('isAuthenticated', true);
         this.accountService.emitLogin();
-        this.router.navigate(['']);
+        switch(res.data.role) {
+          case 1:
+            this.router.navigate(['/admin']);
+            break;
+          case 2:
+            this.router.navigate(['/teacher']);
+            break;
+          case 3:
+            this.router.navigate(['']);
+            break;
+          default:
+            break;
+        }
       }, (err: any) => {
         if(err.code == 401) {
           this.alert = err.message;

@@ -27,7 +27,7 @@ export class Helper {
   showError(error: any): Promise<any> {
     if (error.code == 400) {
       console.log('400');
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
         this.logout();
       });
     } else {

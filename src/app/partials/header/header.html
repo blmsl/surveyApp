@@ -1,20 +1,28 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header logo">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink="/"><img src="assets/images/logo-survey.png" alt="Logo"/></a>
+      <a class="navbar-brand" routerLink="/"><img src="assets/images/logo-survey.png" alt="Logo" /></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/">Home</a></li>
-        <li><a [routerLink]="['/template']">Templates</a></li>
-        <li><a [routerLink]="['/survey']">Surveys</a></li>
-        <li><a routerLink="/">Notifications</a></li>
-        <li><a routerLink="/">Departments</a></li>
-        <li><a routerLink="/">Members</a></li>
+        <ng-container *ngIf="isAdmin">
+          <li><a routerLink="/admin">Home</a></li>
+          <li><a [routerLink]="['/admin/template']">Templates</a></li>
+          <li><a [routerLink]="['/admin/survey']">Surveys</a></li>
+          <li><a routerLink="/">Notifications</a></li>
+          <li><a routerLink="/">Departments</a></li>
+          <li><a routerLink="/">Members</a></li>
+        </ng-container>
+        <ng-container *ngIf="isStudent">
+          <li><a routerLink="/">Surveys</a></li>
+          <li><a routerLink="/notifications">Notifications</a></li>
+          <li><a routerLink="/feedback">Feedback</a></li>
+        </ng-container>
         <li><a routerLink="/login" *ngIf="!isAuthenticated">Login</a></li>
         <li class="dropdown" *ngIf="isAuthenticated">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> {{ user.username }}

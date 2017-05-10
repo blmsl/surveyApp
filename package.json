@@ -23,6 +23,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
+    "ng2-file-upload": "^1.2.1",
     "ng2-toasty": "^2.5.0",
     "ng2-webstorage": "^1.5.1",
     "node-sass": "^4.5.0",

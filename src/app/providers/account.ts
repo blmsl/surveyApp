@@ -9,6 +9,8 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 export class AccountService {
   public loginStatus: Subject<boolean> = new BehaviorSubject<boolean>(false);
   public logoutStatus: Subject<boolean> = new Subject();
+  public isLoggedIn: boolean = false;
+  public redirectUrl: string;
   constructor(
     public http: Http,
     public localStorage: LocalStorageService,
@@ -26,18 +28,36 @@ export class AccountService {
   }
 
   logout(): Promise<any> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.localStorage.clear('user');
       this.localStorage.clear('token');
       this.localStorage.clear('isAuthenticated');
+      resolve(true);
     });
   }
 
+  checkAdmin(): boolean {
+    let user = this.localStorage.retrieve('user');
+    return user.role == 1;
+  }
+
+  checkOfficer(): boolean {
+    let user = this.localStorage.retrieve('user');
+    return user.role == 2;
+  }
+
+  checkStudent(): boolean {
+    let user = this.localStorage.retrieve('user');
+    return user.role == 3;
+  }
+
   emitLogin() {
+    this.isLoggedIn = true;
     this.loginStatus.next(true);
   }
 
   emitLogout() {
+    this.isLoggedIn = false;
     this.logoutStatus.next(true);
   }
 }

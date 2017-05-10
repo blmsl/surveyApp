@@ -46,4 +46,11 @@ export class TemplateService {
   emitCreateTemplate() {
     this.createStatus.next(true);
   }
+
+  saveDefaultTemplate(id) {
+    const endpoint = '/template/setDefautl/' + id;
+    return this.apiAdmin.post(endpoint)
+      .catch(this.helper.hanlderError)
+      .map(res => res.json());
+  }
 }

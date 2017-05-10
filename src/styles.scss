@@ -54,3 +54,50 @@ used to vertically center elements, may need modification if you're not using de
 .panel-table .panel-body .table-bordered > tbody > tr > td{
   line-height: 34px;
 }
+
+.page-list-student-survey {
+  .no-border {
+    border: none;
+    background-color: transparent;
+  }
+
+  .survey-item {
+    color: #222;
+    font-weight: bold;
+    &.submitted {
+      color: #555;
+      font-weight: normal;
+    }
+  }
+}
+
+.responses {
+  overflow: hidden;
+  background-color: #999;
+  color: #fff;
+  .responses-left {
+    float: left;
+    width: calc(100% - 360px);
+  }
+
+  .responses-right {
+    float: right;
+    width: 360px;
+    div {
+      display: inline-block;
+      float: left;
+      width: 60px;
+      text-align: center;
+    }
+  }
+}
+
+.response-block {
+  margin-bottom: 15px;
+  background-color: transparent;
+  color: #333;
+}
+
+.clearfix {
+  clear: both;
+}

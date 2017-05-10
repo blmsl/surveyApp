@@ -1,0 +1,52 @@
+<div class="teacher-survey-result-page">
+  <div class="page-title text-center">
+    <h4>Kết quả đánh giá môn học</h4>
+    <p>Học kì I năm học 2016-2017</p>
+  </div>
+  <div class="">
+    <p>Tên môn học: {{ surveyTitle }}</p>
+    <p>Tên giảng viên: {{ teacherName }}</p>
+  </div>
+  <div class="survey-content">
+    <ng-container *ngFor="let content of surveyQuestions; let i = index">
+      <ng-container *ngIf="i != 3">
+        <div>{{ i + 1 + '. ' + content.title }}</div>
+        <div class="responses">
+          <div class="responses-left">Responses</div>
+          <div class="responses-right">
+            <ng-container *ngFor="let column of content.columns">
+              <div class="responses-column">{{ column }}</div>
+            </ng-container>
+            <div class="responses-total">Total</div>
+          </div>
+        </div>
+
+        <div class="response-block responses">
+          <ng-container *ngFor="let row of content.rows; let i = index">
+            <div class="question-list responses-left">{{ row }}</div>
+            <div class="responses-right">
+              <div class="column-1 responses-column">{{ (responseRowColumn[0][row] || 0) + ' (' + ((responseRowColumn[0][row] || 0)/responseTotal*100 | number:'.0') + '%)' }}</div>
+              <div class="column-2 responses-column">{{ (responseRowColumn[1][row] || 0) + ' (' + ((responseRowColumn[1][row] || 0)/responseTotal*100 | number:'.0') + '%)' }}</div>
+              <div class="column-3 responses-column">{{ (responseRowColumn[2][row] || 0) + ' (' + ((responseRowColumn[2][row] || 0)/responseTotal*100 | number:'.0') + '%)' }}</div>
+              <div class="column-4 responses-column">{{ (responseRowColumn[3][row] || 0) + ' (' + ((responseRowColumn[3][row] || 0)/responseTotal*100 | number:'.0') + '%)' }}</div>
+              <div class="column-5 responses-column">{{ (responseRowColumn[4][row] || 0) + ' (' + ((responseRowColumn[4][row] || 0)/responseTotal*100 | number:'.0') + '%)' }}</div>
+              <div class="column-total">{{ responseTotal }}</div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="i == 3">
+        <div>{{ i + 1 + '. ' + content.title }}</div>
+        <div class="responses">
+          <div class="responses-left">Responses</div>
+        </div>
+        <div class="list-othercomment">
+          <ng-container *ngFor="let comment of otherComment">
+            <div>{{ comment }}</div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </ng-container>
+    <div class="clearfix"></div>
+  </div>
+</div>
